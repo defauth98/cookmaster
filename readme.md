@@ -7,7 +7,19 @@
 
 **Descrição**
 
-Projeto desenvolvido durante o modulo de backend da Trybe.
+Projeto desenvolvido durante o modulo de backend da Trybe. Consiste em um projeto para realizar cadastro de receitas, e ver sobre upload de arquivos, token JWT e banco de dados não relacional.
+
+### 🌟 Habilidades
+
+* Entender o que há por dentro de um token de autenticação;
+* Gerar tokens a partir de informações como login e senha;
+* Autenticar rotas do Express, usando o token JWT;
+* Fazer upload de arquivos em APIs REST;
+* Salvar arquivos no servidor através de uma API REST;
+* Consultar arquivos do servidor através de uma api REST.
+* Realizar testes de integração
+
+_Fonte: Repositório da Trybe_
 
 ### :nut_and_bolt: Tecnologias
 
@@ -20,6 +32,23 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 [nodejs]: https://nodejs.org/en/
 [express]: https://expressjs.com/pt-br/
 [mongo]: https://www.mongodb.com/pt-br
+
+### :station: Rotas
+
+**Autenticação**
+
+- POST **/login** - Gera um token JWT.
+
+**User:**
+
+- POST **/users** - Cadastra um novo \usuário.
+
+**Recipes (Necessita autenticação):**
+
+- POST **/recipes** - Registra uma nova receita
+- PUT **/recipes/:id** - Edita uma receita
+- GET **/recipes** - Lista todos os receitas
+- GET **/recipes/:id** - Lista uma receita pelo ID
 
 ### :thinking: Como rodar
 
@@ -36,7 +65,6 @@ npm install
 # Rode o projeto
 npm start
 ```
-
 
 ---
 
