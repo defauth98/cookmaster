@@ -1,9 +1,9 @@
 const { ObjectId } = require('mongodb');
-const mongoConnection = require('./connection');
+const { connection } = require('./connection');
 
 module.exports = {
   async create(name, ingredients, preparation, user) {
-    const db = await mongoConnection();
+    const db = await connection();
     const recipesCollection = await db.collection('recipes');
     const { _id } = user;
 
@@ -16,7 +16,7 @@ module.exports = {
   },
   
   async findAll() {
-    const db = await mongoConnection();
+    const db = await connection();
     const recipesCollection = await db.collection('recipes');
 
     const recipes = await recipesCollection.find().toArray();
@@ -25,7 +25,7 @@ module.exports = {
   },
 
   async findById(id) {
-    const db = await mongoConnection();
+    const db = await connection();
     const recipesCollection = await db.collection('recipes');
 
     if (!ObjectId.isValid(id)) {
@@ -38,7 +38,7 @@ module.exports = {
   },
 
   async edit(id, name, ingredients, preparation) {
-    const db = await mongoConnection();
+    const db = await connection();
     const recipesCollection = await db.collection('recipes');
 
     if (!ObjectId.isValid(id)) {
@@ -52,7 +52,7 @@ module.exports = {
   },
 
   async delete(id) {
-    const db = await mongoConnection();
+    const db = await connection();
     const recipesCollection = await db.collection('recipes');
 
     await recipesCollection.deleteOne({ _id: ObjectId(id) });
@@ -61,7 +61,7 @@ module.exports = {
   },
 
   async updateImage(id, image) {
-    const db = await mongoConnection();
+    const db = await connection();
     const recipesCollection = await db.collection('recipes');
     const imageURL = `localhost:3000/src/uploads/${image}`;
 
